@@ -1,0 +1,38 @@
+.css-preview-container {
+  margin-top: 15px;
+  background-color: #1e1e1e;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px dashed #61dafb;
+  text-align: center;
+}
+
+.css-preview-container h4 {
+  margin: 0 0 10px 0;
+  font-size: 1em;
+  color: #a0a0a0;
+}
+
+.preview-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.preview-elements-wrapper {
+  background-color: #2c2f33;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.preview-elements-wrapper h3,
+.preview-elements-wrapper p,
+.preview-elements-wrapper a,
+.preview-elements-wrapper button {
+  margin-bottom: 10px;
+  /* Garante que os estilos do seu CSS sobrescrevam estes */
+  all: unset;
+  display: block;
+}

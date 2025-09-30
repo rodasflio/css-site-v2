@@ -80,10 +80,29 @@
   text-align: right;
 }
 
+/* Estilo do novo botão de visualização */
+.view-visual-link {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.view-visual-link:hover {
+  background-color: #2980b9;
+}
+
 .view-link {
   background-color: #61dafb;
   color: #282c34;
   padding: 10px 15px;
+  border: none;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
@@ -98,6 +117,11 @@
   color: #a0a0a0;
   font-style: italic;
   margin-top: 50px;
+}
+
+/* Estilo para a visualização dentro do card */
+.file-card .css-preview-container {
+  margin-bottom: 20px;
 }
 
 /* Media Queries para a responsividade dos cards */

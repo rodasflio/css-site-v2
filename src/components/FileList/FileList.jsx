@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import CodeModal from '../CodeModal/CodeModal';
+import LivePreviewModal from '../LivePreviewModal/LivePreviewModal';
+import CssPreview from '../CssPreview/CssPreview';
 import { supabase } from '../../lib/supabaseClient.jsx';
 import './FileList.css';
 
 const FileList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFileCode, setSelectedFileCode] = useState(null);
+  const [selectedFileForPreview, setSelectedFileForPreview] = useState(null);
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Função para buscar os arquivos no banco de dados
   const fetchFiles = async () => {
     setLoading(true);
     const { data, error } = await supabase
@@ -38,8 +40,13 @@ const FileList = () => {
     setSelectedFileCode(code);
   };
 
+  const handleViewLivePreview = (file) => {
+    setSelectedFileForPreview(file);
+  };
+
   const handleCloseModal = () => {
     setSelectedFileCode(null);
+    setSelectedFileForPreview(null);
   };
 
   return (
@@ -64,7 +71,14 @@ const FileList = () => {
                   <h3>{file.name}</h3>
                   <p>{file.description}</p>
                 </div>
+                <CssPreview code={file.code} />
                 <div className="file-actions">
+                  <button
+                    onClick={() => handleViewLivePreview(file)}
+                    className="view-visual-link"
+                  >
+                    Ver Exemplo Visual
+                  </button>
                   <button
                     onClick={() => handleViewCode(file.code)}
                     className="view-link"
@@ -81,6 +95,9 @@ const FileList = () => {
       )}
       {selectedFileCode && (
         <CodeModal code={selectedFileCode} onClose={handleCloseModal} />
+      )}
+      {selectedFileForPreview && (
+        <LivePreviewModal code={selectedFileForPreview.code} onClose={handleCloseModal} />
       )}
     </section>
   );
