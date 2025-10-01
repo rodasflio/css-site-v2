@@ -34,7 +34,8 @@
   color: #a0a0a0;
 }
 
-.register-form input {
+.register-form input,
+.register-form textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #444;
@@ -57,7 +58,12 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.register-button:hover {
+.register-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.register-button:hover:not(:disabled) {
   background-color: #52c2e0;
   transform: translateY(-2px);
 }
@@ -84,4 +90,18 @@
   color: #61dafb;
   font-weight: bold;
   text-decoration: none;
+}
+
+/* Estilos para o feedback da senha */
+.password-status {
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.password-status.valid {
+  color: #2ecc71;
+}
+
+.password-status.invalid {
+  color: #ff6b6b;
 }

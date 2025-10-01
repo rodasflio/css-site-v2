@@ -14,11 +14,8 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
-
     const success = await login(email, password);
     setLoading(false);
-
     if (success) {
       navigate('/');
     } else {
@@ -50,6 +47,9 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+        </div>
+        <div className="forgot-password-link">
+          <a href="/forgot-password">Esqueci a senha</a>
         </div>
         <button type="submit" className="login-button" disabled={loading}>
           {loading ? 'Entrando...' : 'Entrar'}
